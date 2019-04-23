@@ -1,3 +1,5 @@
+import Button from '@material-ui/core/Button'
+import TextField from '@material-ui/core/TextField'
 import gql from 'graphql-tag'
 import React, { useState } from 'react'
 import { useMutation } from 'react-apollo-hooks'
@@ -18,9 +20,9 @@ const SIGNUP_MUTATION = gql`
 
 function Signup() {
   const [signupForm, setSignupForm] = useState({
-    email: 'nenene@gmail.com',
-    name: 'nenene',
-    password: 'password'
+    email: '1nenene@gmail.com',
+    name: '1nenene',
+    password: '1password'
   })
 
   const saveToState = e => {
@@ -31,57 +33,59 @@ function Signup() {
   }
 
   const signup = useMutation(SIGNUP_MUTATION, {
-    variables: { signupForm }
+    variables: { ...signupForm }
   })
 
   return (
-    <div>
-      <form
-        method="post"
-        onSubmit={async e => {
-          e.preventDefault()
-          await signup()
-        }}
-      >
-        <fieldset>
-          <label htmlFor="email">
-            Email
-            <input
-              type="email"
-              name="email"
-              placeholder="email"
-              value={signupForm.email}
-              onChange={saveToState}
-              required
-            />
-          </label>
-          <label htmlFor="name">
-            Name
-            <input
-              type="text"
-              name="name"
-              placeholder="name"
-              value={signupForm.name}
-              onChange={saveToState}
-              required
-            />
-          </label>
-          <label htmlFor="password">
-            Password
-            <input
-              type="password"
-              name="password"
-              placeholder="password"
-              value={signupForm.password}
-              onChange={saveToState}
-              required
-            />
-          </label>
+    <form
+      className="signupForm"
+      method="post"
+      onSubmit={async e => {
+        e.preventDefault()
+        await signup()
+        // this.props.history.push(`/`)
+      }}
+    >
+      <fieldset>
+        <label htmlFor="email">
+          Email
+          <TextField
+            type="email"
+            name="email"
+            placeholder="email"
+            value={signupForm.email}
+            onChange={saveToState}
+            required
+          />
+        </label>
+        <label htmlFor="name">
+          Name
+          <TextField
+            type="text"
+            name="name"
+            placeholder="name"
+            value={signupForm.name}
+            onChange={saveToState}
+            required
+          />
+        </label>
+        <label htmlFor="password">
+          Password
+          <TextField
+            type="password"
+            name="password"
+            placeholder="password"
+            value={signupForm.password}
+            onChange={saveToState}
+            required
+          />
+        </label>
 
-          <button type="submit">Sign Up!</button>
-        </fieldset>
-      </form>
-    </div>
+        <Button variant="contained" color="primary" type="submit">
+          Sign Up!
+        </Button>
+      </fieldset>
+    </form>
   )
 }
 

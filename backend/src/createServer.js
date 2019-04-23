@@ -14,14 +14,10 @@ function createServer() {
       Mutation,
       Query
     },
-    cors: {
-      credentials: true,
-      origin: process.env.FRONTEND_URL
-    },
 
-    resolverValidationOptions: {
-      requireResolversForResolveType: false
-    },
+    // resolverValidationOptions: {
+    //   requireResolversForResolveType: false
+    // },
     context: req => ({ ...req, db })
   })
 }

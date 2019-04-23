@@ -1,0 +1,14 @@
+form {
+  width: 50%;
+  display: flex;
+  margin: 0 auto;
+}
+div,
+input {
+  display: block;
+  width: 100%;
+}
+
+.signupForm {
+  margin-top: 30px;
+}
