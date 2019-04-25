@@ -1,3 +1,4 @@
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
 import ApolloClient from 'apollo-boost'
 import React, { Suspense } from 'react'
 import { ApolloProvider } from 'react-apollo'
@@ -8,6 +9,7 @@ import Nav from './components/Nav'
 import Signin from './components/Signin'
 import Signup from './components/Signup'
 import { endpoint } from './config'
+import theme from './theme'
 
 const client = new ApolloClient({
   uri: endpoint,
@@ -16,17 +18,20 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    <Suspense fallback={<p>Loading...</p>}>
-      <ApolloProvider client={client}>
-        <ApolloHooksProvider client={client}>
-          <Router>
-            <Nav />
-            <Route exact path="/signup" component={Signup} />
-            <Route exact path="/signin" component={Signin} />
-          </Router>
-        </ApolloHooksProvider>
-      </ApolloProvider>
-    </Suspense>
+    <MuiThemeProvider theme={theme}>
+      <Suspense fallback={<p>Loading...</p>}>
+        <ApolloProvider client={client}>
+          <ApolloHooksProvider client={client}>
+            <Router>
+              <Nav />
+              <Route exact path="/signup" component={Signup} />
+              <Route exact path="/signin" component={Signin} />
+              <Route exact path="/" component={Signin} />
+            </Router>
+          </ApolloHooksProvider>
+        </ApolloProvider>
+      </Suspense>
+    </MuiThemeProvider>
   )
 }
 

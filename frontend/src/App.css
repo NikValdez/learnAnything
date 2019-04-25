@@ -12,3 +12,16 @@ input {
 .signupForm {
   margin-top: 30px;
 }
+.signinForm {
+  margin-top: 30px;
+}
+
+.authButton {
+  text-align: right;
+  margin-right: 50px;
+}
+
+a {
+  text-decoration: none;
+  color: 'white';
+}
