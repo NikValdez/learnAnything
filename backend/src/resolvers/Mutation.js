@@ -32,7 +32,7 @@ const Mutations = {
       maxAge: 1000 * 60 * 60 * 24 * 365 // 1 year cookie
     })
     // Finalllllly we return the user to the browser
-    console.log(user)
+
     return user
   },
   async signin(parent, { email, password }, ctx, info) {

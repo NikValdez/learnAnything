@@ -24,7 +24,8 @@ app.use((req, res, next) => {
   console.log(token)
   if (token) {
     const { userId } = jwt.verify(token, process.env.APP_SECRET)
-    req.userID = userId
+    req.userId = userId
+    console.log(userId)
   }
   next()
 })

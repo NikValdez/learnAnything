@@ -5,6 +5,7 @@ import { ApolloProvider as ApolloHooksProvider } from 'react-apollo-hooks'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import './App.css'
 import Nav from './components/Nav'
+import Signin from './components/Signin'
 import Signup from './components/Signup'
 import { endpoint } from './config'
 
@@ -21,6 +22,7 @@ function App() {
           <Router>
             <Nav />
             <Route exact path="/signup" component={Signup} />
+            <Route exact path="/signin" component={Signin} />
           </Router>
         </ApolloHooksProvider>
       </ApolloProvider>

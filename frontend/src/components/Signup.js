@@ -3,6 +3,7 @@ import TextField from '@material-ui/core/TextField'
 import gql from 'graphql-tag'
 import React, { useState } from 'react'
 import { useMutation } from 'react-apollo-hooks'
+import { CURRENT_USER_QUERY } from './User'
 
 const SIGNUP_MUTATION = gql`
   mutation SIGNUP_MUTATION(
@@ -20,9 +21,9 @@ const SIGNUP_MUTATION = gql`
 
 function Signup() {
   const [signupForm, setSignupForm] = useState({
-    email: '1nenene@gmail.com',
-    name: '1nenene',
-    password: '1password'
+    email: 'nikcochran@gmail.com',
+    name: 'Nik Cochran',
+    password: 'password'
   })
 
   const saveToState = e => {
@@ -33,7 +34,8 @@ function Signup() {
   }
 
   const signup = useMutation(SIGNUP_MUTATION, {
-    variables: { ...signupForm }
+    variables: { ...signupForm },
+    refetchQueries: [{ query: CURRENT_USER_QUERY }]
   })
 
   return (
