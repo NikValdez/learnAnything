@@ -3,9 +3,11 @@ import ApolloClient from 'apollo-boost'
 import React, { Suspense } from 'react'
 import { ApolloProvider } from 'react-apollo'
 import { ApolloProvider as ApolloHooksProvider } from 'react-apollo-hooks'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import './App.css'
+import Home from './components/Home'
 import Nav from './components/Nav'
+import PleaseSignIn from './components/PleaseSignIn'
 import Signin from './components/Signin'
 import Signup from './components/Signup'
 import { endpoint } from './config'
@@ -24,9 +26,13 @@ function App() {
           <ApolloHooksProvider client={client}>
             <Router>
               <Nav />
-              <Route exact path="/signup" component={Signup} />
-              <Route exact path="/signin" component={Signin} />
-              <Route exact path="/" component={Signin} />
+              <Switch>
+                <Route exact path="/signup" component={Signup} />
+                <Route exact path="/signin" component={Signin} />
+                <PleaseSignIn>
+                  <Route exact path="/" component={Home} />
+                </PleaseSignIn>
+              </Switch>
             </Router>
           </ApolloHooksProvider>
         </ApolloProvider>

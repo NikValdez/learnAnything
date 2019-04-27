@@ -3,6 +3,7 @@ import TextField from '@material-ui/core/TextField'
 import gql from 'graphql-tag'
 import React, { useState } from 'react'
 import { useMutation } from 'react-apollo-hooks'
+import { withRouter } from 'react-router-dom'
 import { CURRENT_USER_QUERY } from './User'
 
 const SIGNUP_MUTATION = gql`
@@ -19,7 +20,7 @@ const SIGNUP_MUTATION = gql`
   }
 `
 
-function Signup() {
+function Signup(props) {
   const [signupForm, setSignupForm] = useState({
     email: 'nikcochran@gmail.com',
     name: 'Nik Cochran',
@@ -45,7 +46,7 @@ function Signup() {
       onSubmit={async e => {
         e.preventDefault()
         await signup()
-        // this.props.history.push(`/`)
+        props.history.push(`/`)
       }}
     >
       <fieldset>
@@ -91,4 +92,4 @@ function Signup() {
   )
 }
 
-export default Signup
+export default withRouter(Signup)
