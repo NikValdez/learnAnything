@@ -1,0 +1,9 @@
+.header {
+  background-size: cover;
+  height: 50vh;
+}
+
+.header-center {
+  margin-top: 10rem;
+  text-align: center;
+}
