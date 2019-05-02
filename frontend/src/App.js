@@ -5,6 +5,7 @@ import { ApolloProvider } from 'react-apollo'
 import { ApolloProvider as ApolloHooksProvider } from 'react-apollo-hooks'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import './App.css'
+import Footer from './components/Footer'
 import Home from './components/Home'
 import Nav from './components/Nav'
 import PleaseSignIn from './components/PleaseSignIn'
@@ -33,6 +34,7 @@ function App() {
                   <Route exact path="/" component={Home} />
                 </PleaseSignIn>
               </Switch>
+              <Footer />
             </Router>
           </ApolloHooksProvider>
         </ApolloProvider>

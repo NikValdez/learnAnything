@@ -59,6 +59,25 @@ const Mutations = {
   signout(parent, args, ctx, info) {
     ctx.res.clearCookie('token')
     return { message: 'Signed out' }
+  },
+  async createCurriculum(parent, args, ctx, info) {
+    if (!ctx.res.userId) {
+      throw new Error('You must be logged in to do that!')
+    }
+    const curriculum = await ctx.db.mutation.createCurriculum(
+      {
+        data: {
+          user: {
+            connect: {
+              id: ctx.res.userId
+            }
+          },
+          ...args
+        }
+      },
+      info
+    )
+    return curriculum
   }
 }
 

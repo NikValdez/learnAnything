@@ -1,5 +1,9 @@
 # source: https://us1.prisma.sh/nikvaldez-073802/LearnAnythingBackend/dev
-# timestamp: Wed Apr 24 2019 08:16:43 GMT-0700 (PDT)
+# timestamp: Thu May 02 2019 11:36:12 GMT-0700 (PDT)
+
+type AggregateCurriculum {
+  count: Int!
+}
 
 type AggregateUser {
   count: Int!
@@ -8,6 +12,315 @@ type AggregateUser {
 type BatchPayload {
   """The number of nodes that have been affected by the Batch operation."""
   count: Long!
+}
+
+type Curriculum implements Node {
+  id: ID!
+  title: String!
+  time: Int
+  outline: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""A connection to a list of items."""
+type CurriculumConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [CurriculumEdge]!
+  aggregate: AggregateCurriculum!
+}
+
+input CurriculumCreateInput {
+  id: ID
+  title: String!
+  time: Int
+  outline: String!
+}
+
+"""An edge in a connection."""
+type CurriculumEdge {
+  """The item at the end of the edge."""
+  node: Curriculum!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum CurriculumOrderByInput {
+  id_ASC
+  id_DESC
+  title_ASC
+  title_DESC
+  time_ASC
+  time_DESC
+  outline_ASC
+  outline_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type CurriculumPreviousValues {
+  id: ID!
+  title: String!
+  time: Int
+  outline: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type CurriculumSubscriptionPayload {
+  mutation: MutationType!
+  node: Curriculum
+  updatedFields: [String!]
+  previousValues: CurriculumPreviousValues
+}
+
+input CurriculumSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [CurriculumSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [CurriculumSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [CurriculumSubscriptionWhereInput!]
+
+  """The subscription event gets dispatched when it's listed in mutation_in"""
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: CurriculumWhereInput
+}
+
+input CurriculumUpdateInput {
+  title: String
+  time: Int
+  outline: String
+}
+
+input CurriculumUpdateManyMutationInput {
+  title: String
+  time: Int
+  outline: String
+}
+
+input CurriculumWhereInput {
+  """Logical AND on all given filters."""
+  AND: [CurriculumWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [CurriculumWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [CurriculumWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  title: String
+
+  """All values that are not equal to given value."""
+  title_not: String
+
+  """All values that are contained in given list."""
+  title_in: [String!]
+
+  """All values that are not contained in given list."""
+  title_not_in: [String!]
+
+  """All values less than the given value."""
+  title_lt: String
+
+  """All values less than or equal the given value."""
+  title_lte: String
+
+  """All values greater than the given value."""
+  title_gt: String
+
+  """All values greater than or equal the given value."""
+  title_gte: String
+
+  """All values containing the given string."""
+  title_contains: String
+
+  """All values not containing the given string."""
+  title_not_contains: String
+
+  """All values starting with the given string."""
+  title_starts_with: String
+
+  """All values not starting with the given string."""
+  title_not_starts_with: String
+
+  """All values ending with the given string."""
+  title_ends_with: String
+
+  """All values not ending with the given string."""
+  title_not_ends_with: String
+  time: Int
+
+  """All values that are not equal to given value."""
+  time_not: Int
+
+  """All values that are contained in given list."""
+  time_in: [Int!]
+
+  """All values that are not contained in given list."""
+  time_not_in: [Int!]
+
+  """All values less than the given value."""
+  time_lt: Int
+
+  """All values less than or equal the given value."""
+  time_lte: Int
+
+  """All values greater than the given value."""
+  time_gt: Int
+
+  """All values greater than or equal the given value."""
+  time_gte: Int
+  outline: String
+
+  """All values that are not equal to given value."""
+  outline_not: String
+
+  """All values that are contained in given list."""
+  outline_in: [String!]
+
+  """All values that are not contained in given list."""
+  outline_not_in: [String!]
+
+  """All values less than the given value."""
+  outline_lt: String
+
+  """All values less than or equal the given value."""
+  outline_lte: String
+
+  """All values greater than the given value."""
+  outline_gt: String
+
+  """All values greater than or equal the given value."""
+  outline_gte: String
+
+  """All values containing the given string."""
+  outline_contains: String
+
+  """All values not containing the given string."""
+  outline_not_contains: String
+
+  """All values starting with the given string."""
+  outline_starts_with: String
+
+  """All values not starting with the given string."""
+  outline_not_starts_with: String
+
+  """All values ending with the given string."""
+  outline_ends_with: String
+
+  """All values not ending with the given string."""
+  outline_not_ends_with: String
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
+}
+
+input CurriculumWhereUniqueInput {
+  id: ID
 }
 
 scalar DateTime
@@ -20,11 +333,17 @@ scalar Long
 
 type Mutation {
   createUser(data: UserCreateInput!): User!
+  createCurriculum(data: CurriculumCreateInput!): Curriculum!
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
+  updateCurriculum(data: CurriculumUpdateInput!, where: CurriculumWhereUniqueInput!): Curriculum
   deleteUser(where: UserWhereUniqueInput!): User
+  deleteCurriculum(where: CurriculumWhereUniqueInput!): Curriculum
   upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
+  upsertCurriculum(where: CurriculumWhereUniqueInput!, create: CurriculumCreateInput!, update: CurriculumUpdateInput!): Curriculum!
   updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
+  updateManyCurricula(data: CurriculumUpdateManyMutationInput!, where: CurriculumWhereInput): BatchPayload!
   deleteManyUsers(where: UserWhereInput): BatchPayload!
+  deleteManyCurricula(where: CurriculumWhereInput): BatchPayload!
 }
 
 enum MutationType {
@@ -62,8 +381,11 @@ enum Permission {
 
 type Query {
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
+  curricula(where: CurriculumWhereInput, orderBy: CurriculumOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Curriculum]!
   user(where: UserWhereUniqueInput!): User
+  curriculum(where: CurriculumWhereUniqueInput!): Curriculum
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
+  curriculaConnection(where: CurriculumWhereInput, orderBy: CurriculumOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CurriculumConnection!
 
   """Fetches an object given its ID"""
   node(
@@ -74,6 +396,7 @@ type Query {
 
 type Subscription {
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
+  curriculum(where: CurriculumSubscriptionWhereInput): CurriculumSubscriptionPayload
 }
 
 type User implements Node {

@@ -15,3 +15,12 @@ type User {
   updatedAt: DateTime! @updatedAt
   permissions: [Permission] @scalarList(strategy: RELATION)
 }
+
+type Curriculum {
+  id: ID! @id @unique
+  title: String!
+  time: Int
+  outline: String!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
