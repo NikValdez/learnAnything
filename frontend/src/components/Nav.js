@@ -14,7 +14,7 @@ class Nav extends Component {
       <User>
         {({ data }) => {
           const me = data ? data.me : null
-          console.log(me)
+
           return (
             <AppBar position="static">
               <Toolbar>

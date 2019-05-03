@@ -14,13 +14,15 @@ type User {
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
   permissions: [Permission] @scalarList(strategy: RELATION)
+  curriculums: [Curriculum!]!
 }
 
 type Curriculum {
   id: ID! @id @unique
   title: String!
-  time: Int
+  time: String
   outline: String!
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
+  user: User!
 }

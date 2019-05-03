@@ -61,7 +61,8 @@ const Mutations = {
     return { message: 'Signed out' }
   },
   async createCurriculum(parent, args, ctx, info) {
-    if (!ctx.res.userId) {
+    console.log(ctx.req.userId)
+    if (!ctx.req.userId) {
       throw new Error('You must be logged in to do that!')
     }
     const curriculum = await ctx.db.mutation.createCurriculum(
@@ -69,7 +70,7 @@ const Mutations = {
         data: {
           user: {
             connect: {
-              id: ctx.res.userId
+              id: ctx.req.userId
             }
           },
           ...args

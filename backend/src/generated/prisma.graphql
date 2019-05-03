@@ -1,5 +1,5 @@
 # source: https://us1.prisma.sh/nikvaldez-073802/LearnAnythingBackend/dev
-# timestamp: Thu May 02 2019 11:36:12 GMT-0700 (PDT)
+# timestamp: Fri May 03 2019 13:22:37 GMT-0700 (PDT)
 
 type AggregateCurriculum {
   count: Int!
@@ -17,10 +17,11 @@ type BatchPayload {
 type Curriculum implements Node {
   id: ID!
   title: String!
-  time: Int
+  time: String
   outline: String!
   createdAt: DateTime!
   updatedAt: DateTime!
+  user: User!
 }
 
 """A connection to a list of items."""
@@ -36,7 +37,20 @@ type CurriculumConnection {
 input CurriculumCreateInput {
   id: ID
   title: String!
-  time: Int
+  time: String
+  outline: String!
+  user: UserCreateOneWithoutCurriculumsInput!
+}
+
+input CurriculumCreateManyWithoutUserInput {
+  create: [CurriculumCreateWithoutUserInput!]
+  connect: [CurriculumWhereUniqueInput!]
+}
+
+input CurriculumCreateWithoutUserInput {
+  id: ID
+  title: String!
+  time: String
   outline: String!
 }
 
@@ -67,10 +81,225 @@ enum CurriculumOrderByInput {
 type CurriculumPreviousValues {
   id: ID!
   title: String!
-  time: Int
+  time: String
   outline: String!
   createdAt: DateTime!
   updatedAt: DateTime!
+}
+
+input CurriculumScalarWhereInput {
+  """Logical AND on all given filters."""
+  AND: [CurriculumScalarWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [CurriculumScalarWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [CurriculumScalarWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  title: String
+
+  """All values that are not equal to given value."""
+  title_not: String
+
+  """All values that are contained in given list."""
+  title_in: [String!]
+
+  """All values that are not contained in given list."""
+  title_not_in: [String!]
+
+  """All values less than the given value."""
+  title_lt: String
+
+  """All values less than or equal the given value."""
+  title_lte: String
+
+  """All values greater than the given value."""
+  title_gt: String
+
+  """All values greater than or equal the given value."""
+  title_gte: String
+
+  """All values containing the given string."""
+  title_contains: String
+
+  """All values not containing the given string."""
+  title_not_contains: String
+
+  """All values starting with the given string."""
+  title_starts_with: String
+
+  """All values not starting with the given string."""
+  title_not_starts_with: String
+
+  """All values ending with the given string."""
+  title_ends_with: String
+
+  """All values not ending with the given string."""
+  title_not_ends_with: String
+  time: String
+
+  """All values that are not equal to given value."""
+  time_not: String
+
+  """All values that are contained in given list."""
+  time_in: [String!]
+
+  """All values that are not contained in given list."""
+  time_not_in: [String!]
+
+  """All values less than the given value."""
+  time_lt: String
+
+  """All values less than or equal the given value."""
+  time_lte: String
+
+  """All values greater than the given value."""
+  time_gt: String
+
+  """All values greater than or equal the given value."""
+  time_gte: String
+
+  """All values containing the given string."""
+  time_contains: String
+
+  """All values not containing the given string."""
+  time_not_contains: String
+
+  """All values starting with the given string."""
+  time_starts_with: String
+
+  """All values not starting with the given string."""
+  time_not_starts_with: String
+
+  """All values ending with the given string."""
+  time_ends_with: String
+
+  """All values not ending with the given string."""
+  time_not_ends_with: String
+  outline: String
+
+  """All values that are not equal to given value."""
+  outline_not: String
+
+  """All values that are contained in given list."""
+  outline_in: [String!]
+
+  """All values that are not contained in given list."""
+  outline_not_in: [String!]
+
+  """All values less than the given value."""
+  outline_lt: String
+
+  """All values less than or equal the given value."""
+  outline_lte: String
+
+  """All values greater than the given value."""
+  outline_gt: String
+
+  """All values greater than or equal the given value."""
+  outline_gte: String
+
+  """All values containing the given string."""
+  outline_contains: String
+
+  """All values not containing the given string."""
+  outline_not_contains: String
+
+  """All values starting with the given string."""
+  outline_starts_with: String
+
+  """All values not starting with the given string."""
+  outline_not_starts_with: String
+
+  """All values ending with the given string."""
+  outline_ends_with: String
+
+  """All values not ending with the given string."""
+  outline_not_ends_with: String
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
 }
 
 type CurriculumSubscriptionPayload {
@@ -112,14 +341,55 @@ input CurriculumSubscriptionWhereInput {
 
 input CurriculumUpdateInput {
   title: String
-  time: Int
+  time: String
+  outline: String
+  user: UserUpdateOneRequiredWithoutCurriculumsInput
+}
+
+input CurriculumUpdateManyDataInput {
+  title: String
+  time: String
   outline: String
 }
 
 input CurriculumUpdateManyMutationInput {
   title: String
-  time: Int
+  time: String
   outline: String
+}
+
+input CurriculumUpdateManyWithoutUserInput {
+  create: [CurriculumCreateWithoutUserInput!]
+  connect: [CurriculumWhereUniqueInput!]
+  set: [CurriculumWhereUniqueInput!]
+  disconnect: [CurriculumWhereUniqueInput!]
+  delete: [CurriculumWhereUniqueInput!]
+  update: [CurriculumUpdateWithWhereUniqueWithoutUserInput!]
+  updateMany: [CurriculumUpdateManyWithWhereNestedInput!]
+  deleteMany: [CurriculumScalarWhereInput!]
+  upsert: [CurriculumUpsertWithWhereUniqueWithoutUserInput!]
+}
+
+input CurriculumUpdateManyWithWhereNestedInput {
+  where: CurriculumScalarWhereInput!
+  data: CurriculumUpdateManyDataInput!
+}
+
+input CurriculumUpdateWithoutUserDataInput {
+  title: String
+  time: String
+  outline: String
+}
+
+input CurriculumUpdateWithWhereUniqueWithoutUserInput {
+  where: CurriculumWhereUniqueInput!
+  data: CurriculumUpdateWithoutUserDataInput!
+}
+
+input CurriculumUpsertWithWhereUniqueWithoutUserInput {
+  where: CurriculumWhereUniqueInput!
+  update: CurriculumUpdateWithoutUserDataInput!
+  create: CurriculumCreateWithoutUserInput!
 }
 
 input CurriculumWhereInput {
@@ -211,28 +481,46 @@ input CurriculumWhereInput {
 
   """All values not ending with the given string."""
   title_not_ends_with: String
-  time: Int
+  time: String
 
   """All values that are not equal to given value."""
-  time_not: Int
+  time_not: String
 
   """All values that are contained in given list."""
-  time_in: [Int!]
+  time_in: [String!]
 
   """All values that are not contained in given list."""
-  time_not_in: [Int!]
+  time_not_in: [String!]
 
   """All values less than the given value."""
-  time_lt: Int
+  time_lt: String
 
   """All values less than or equal the given value."""
-  time_lte: Int
+  time_lte: String
 
   """All values greater than the given value."""
-  time_gt: Int
+  time_gt: String
 
   """All values greater than or equal the given value."""
-  time_gte: Int
+  time_gte: String
+
+  """All values containing the given string."""
+  time_contains: String
+
+  """All values not containing the given string."""
+  time_not_contains: String
+
+  """All values starting with the given string."""
+  time_starts_with: String
+
+  """All values not starting with the given string."""
+  time_not_starts_with: String
+
+  """All values ending with the given string."""
+  time_ends_with: String
+
+  """All values not ending with the given string."""
+  time_not_ends_with: String
   outline: String
 
   """All values that are not equal to given value."""
@@ -317,6 +605,7 @@ input CurriculumWhereInput {
 
   """All values greater than or equal the given value."""
   updatedAt_gte: DateTime
+  user: UserWhereInput
 }
 
 input CurriculumWhereUniqueInput {
@@ -409,6 +698,7 @@ type User implements Node {
   createdAt: DateTime!
   updatedAt: DateTime!
   permissions: [Permission!]!
+  curriculums(where: CurriculumWhereInput, orderBy: CurriculumOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Curriculum!]
 }
 
 """A connection to a list of items."""
@@ -429,10 +719,26 @@ input UserCreateInput {
   resetToken: String
   resetTokenExpiry: Float
   permissions: UserCreatepermissionsInput
+  curriculums: CurriculumCreateManyWithoutUserInput
+}
+
+input UserCreateOneWithoutCurriculumsInput {
+  create: UserCreateWithoutCurriculumsInput
+  connect: UserWhereUniqueInput
 }
 
 input UserCreatepermissionsInput {
   set: [Permission!]
+}
+
+input UserCreateWithoutCurriculumsInput {
+  id: ID
+  name: String!
+  email: String!
+  password: String!
+  resetToken: String
+  resetTokenExpiry: Float
+  permissions: UserCreatepermissionsInput
 }
 
 """An edge in a connection."""
@@ -519,6 +825,7 @@ input UserUpdateInput {
   resetToken: String
   resetTokenExpiry: Float
   permissions: UserUpdatepermissionsInput
+  curriculums: CurriculumUpdateManyWithoutUserInput
 }
 
 input UserUpdateManyMutationInput {
@@ -530,8 +837,29 @@ input UserUpdateManyMutationInput {
   permissions: UserUpdatepermissionsInput
 }
 
+input UserUpdateOneRequiredWithoutCurriculumsInput {
+  create: UserCreateWithoutCurriculumsInput
+  connect: UserWhereUniqueInput
+  update: UserUpdateWithoutCurriculumsDataInput
+  upsert: UserUpsertWithoutCurriculumsInput
+}
+
 input UserUpdatepermissionsInput {
   set: [Permission!]
+}
+
+input UserUpdateWithoutCurriculumsDataInput {
+  name: String
+  email: String
+  password: String
+  resetToken: String
+  resetTokenExpiry: Float
+  permissions: UserUpdatepermissionsInput
+}
+
+input UserUpsertWithoutCurriculumsInput {
+  update: UserUpdateWithoutCurriculumsDataInput!
+  create: UserCreateWithoutCurriculumsInput!
 }
 
 input UserWhereInput {
@@ -809,6 +1137,9 @@ input UserWhereInput {
 
   """All values greater than or equal the given value."""
   updatedAt_gte: DateTime
+  curriculums_every: CurriculumWhereInput
+  curriculums_some: CurriculumWhereInput
+  curriculums_none: CurriculumWhereInput
 }
 
 input UserWhereUniqueInput {

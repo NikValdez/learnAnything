@@ -5,6 +5,7 @@ import { ApolloProvider } from 'react-apollo'
 import { ApolloProvider as ApolloHooksProvider } from 'react-apollo-hooks'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import './App.css'
+import CreateCurriculum from './components/CreateCurriculum'
 import Footer from './components/Footer'
 import Home from './components/Home'
 import Nav from './components/Nav'
@@ -32,6 +33,11 @@ function App() {
                 <Route exact path="/signin" component={Signin} />
                 <PleaseSignIn>
                   <Route exact path="/" component={Home} />
+                  <Route
+                    exact
+                    path="/createcurriculum"
+                    component={CreateCurriculum}
+                  />
                 </PleaseSignIn>
               </Switch>
               <Footer />
