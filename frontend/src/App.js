@@ -14,6 +14,9 @@ import Signin from './components/Signin'
 import Signup from './components/Signup'
 import { endpoint } from './config'
 import theme from './theme'
+import Curricula from './components/Curricula'
+import RequestReset from './components/RequestReset'
+import Reset from './components/Reset'
 
 const client = new ApolloClient({
   uri: endpoint,
@@ -31,6 +34,8 @@ function App() {
               <Switch>
                 <Route exact path="/signup" component={Signup} />
                 <Route exact path="/signin" component={Signin} />
+                <Route exact path="/request_reset" component={RequestReset} />
+                <Route path="/reset/:resetToken" component={Reset} />
                 <PleaseSignIn>
                   <Route exact path="/" component={Home} />
                   <Route
@@ -38,6 +43,7 @@ function App() {
                     path="/createcurriculum"
                     component={CreateCurriculum}
                   />
+                  <Route exact path="/curricula" component={Curricula} />
                 </PleaseSignIn>
               </Switch>
               <Footer />

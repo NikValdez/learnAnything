@@ -15,10 +15,18 @@ type Mutation {
   signup(email: String!, password: String!, name: String!): User!
   signin(email: String!, password: String!): User!
   signout: SuccessMessage
+  requestReset(email: String!): SuccessMessage
+  resetPassword(
+    resetToken: String!
+    password: String!
+    confirmPassword: String!
+  ): User!
   createCurriculum(title: String!, time: String, outline: String!): Curriculum
 }
 
 type Query {
   me: User
   users: [User]!
+  curricula: [Curriculum]!
+  curriculum(where: CurriculumWhereUniqueInput!): Curriculum
 }

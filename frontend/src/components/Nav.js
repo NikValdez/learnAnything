@@ -20,7 +20,7 @@ class Nav extends Component {
               <Toolbar>
                 {/* <IconButton color="inherit" aria-label="Menu" /> */}
                 <Typography variant="h6" color="inherit">
-                  Learn Anything
+                  <Link to="/">Learn Anything</Link>
                 </Typography>
                 {!me ? (
                   <div className="authButton">
