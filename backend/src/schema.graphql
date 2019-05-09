@@ -27,6 +27,14 @@ type Mutation {
 type Query {
   me: User
   users: [User]!
-  curricula: [Curriculum]!
+  curricula(
+    where: CurriculumWhereInput
+    orderBy: CurriculumOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): [Curriculum]!
   curriculum(where: CurriculumWhereUniqueInput!): Curriculum
 }

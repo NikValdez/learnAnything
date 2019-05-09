@@ -17,6 +17,7 @@ import theme from './theme'
 import Curricula from './components/Curricula'
 import RequestReset from './components/RequestReset'
 import Reset from './components/Reset'
+import Search from './components/Search'
 
 const client = new ApolloClient({
   uri: endpoint,
@@ -44,6 +45,7 @@ function App() {
                     component={CreateCurriculum}
                   />
                   <Route exact path="/curricula" component={Curricula} />
+                  <Route exact path="/search" component={Search} />
                 </PleaseSignIn>
               </Switch>
               <Footer />

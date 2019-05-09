@@ -5,6 +5,7 @@ import React, { useState } from 'react'
 import { useMutation } from 'react-apollo-hooks'
 import { withRouter } from 'react-router-dom'
 import { CURRENT_USER_QUERY } from './User'
+import { Link } from 'react-router-dom'
 
 const SIGNIN_MUTATION = gql`
   mutation SIGNIN_MUTATION($email: String!, $password: String!) {
@@ -72,6 +73,9 @@ function Signin(props) {
           Sign In!
         </Button>
       </fieldset>
+      <Button variant="contained" color="primary">
+        <Link to="/request_reset">Forgot Password?</Link>
+      </Button>
     </form>
   )
 }
