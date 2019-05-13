@@ -16,6 +16,11 @@ export default createMuiTheme({
           background: 'linear-gradient(45deg, #0575e6 30%, #021b79 90%)'
         }
       }
+    },
+    MuiDrawer: {
+      paperAnchorRight: {
+        width: '250px'
+      }
     }
   }
 })

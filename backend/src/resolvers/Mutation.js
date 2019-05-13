@@ -122,7 +122,6 @@ const Mutations = {
   },
 
   async createCurriculum(parent, args, ctx, info) {
-    console.log(ctx.req.userId)
     if (!ctx.req.userId) {
       throw new Error('You must be logged in to do that!')
     }
