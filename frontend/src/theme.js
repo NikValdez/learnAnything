@@ -21,6 +21,14 @@ export default createMuiTheme({
       paperAnchorRight: {
         width: '250px'
       }
+    },
+    MuiListItem: {
+      root: {
+        '&:hover': {
+          background: 'linear-gradient(45deg, #0575e6 30%, #021b79 90%)',
+          color: 'white'
+        }
+      }
     }
   }
 })

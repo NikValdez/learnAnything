@@ -46,7 +46,7 @@ function Signin(props) {
     >
       <fieldset>
         <label htmlFor="email">
-          Email
+          email
           <TextField
             type="email"
             name="email"

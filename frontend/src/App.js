@@ -6,18 +6,19 @@ import { ApolloProvider as ApolloHooksProvider } from 'react-apollo-hooks'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import './App.css'
 import CreateCurriculum from './components/CreateCurriculum'
+import Curricula from './components/Curricula'
+import Curriculum from './components/Curriculum'
 import Footer from './components/Footer'
 import Home from './components/Home'
 import Nav from './components/Nav'
 import PleaseSignIn from './components/PleaseSignIn'
+import RequestReset from './components/RequestReset'
+import Reset from './components/Reset'
+import Search from './components/Search'
 import Signin from './components/Signin'
 import Signup from './components/Signup'
 import { endpoint } from './config'
 import theme from './theme'
-import Curricula from './components/Curricula'
-import RequestReset from './components/RequestReset'
-import Reset from './components/Reset'
-import Search from './components/Search'
 
 const client = new ApolloClient({
   uri: endpoint,
@@ -46,6 +47,7 @@ function App() {
                   />
                   <Route exact path="/curricula" component={Curricula} />
                   <Route exact path="/search" component={Search} />
+                  <Route exact path="/curriculum/:id" component={Curriculum} />
                 </PleaseSignIn>
               </Switch>
               <Footer />

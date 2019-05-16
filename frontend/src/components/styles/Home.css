@@ -4,6 +4,8 @@
 }
 
 .header-center {
+  display: grid;
+  grid-template-columns: 35% 50%;
   margin-top: 10rem;
-  text-align: center;
+  /* text-align: center; */
 }

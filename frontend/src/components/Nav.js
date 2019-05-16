@@ -10,6 +10,7 @@ import Drawer from '@material-ui/core/Drawer'
 import Icon from '@material-ui/core/Icon'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
+import CreateCurriculum from './CreateCurriculum'
 
 function Nav() {
   const [navScroll, setNavScroll] = useState(false)
@@ -90,8 +91,14 @@ function Nav() {
                     onKeyDown={toggleDrawer('right', false)}
                   >
                     <List>
-                      <ListItem className="list-item">
+                      <ListItem button>
+                        <Icon style={{ fontSize: '35px' }}>toggle_off</Icon>{' '}
                         <Signout />
+                      </ListItem>
+
+                      <ListItem button component={Link} to="/createcurriculum">
+                        <Icon style={{ fontSize: '25px' }}>create</Icon>
+                        <h4>Create Curruculum</h4>
                       </ListItem>
                     </List>
                   </div>
