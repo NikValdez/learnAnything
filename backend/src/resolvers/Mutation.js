@@ -139,6 +139,24 @@ const Mutations = {
       info
     )
     return curriculum
+  },
+  async updateCurriculum(parent, args, ctx, info) {
+    //run update method
+    return ctx.db.mutation.updateCurriculum(
+      {
+        data: {
+          likedBy: {
+            connect: {
+              id: ctx.req.userId
+            }
+          }
+        },
+        where: {
+          id: args.id
+        }
+      },
+      info
+    )
   }
 }
 

@@ -14,7 +14,8 @@ type User {
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
   permissions: [Permission] @scalarList(strategy: RELATION)
-  curriculums: [Curriculum!]!
+  curriculums: [Curriculum!]! @relation(name: "UserCurriculum")
+  likedCurricula: [Curriculum!]! @relation(name: "LikedCurricula")
 }
 
 type Curriculum {
@@ -24,5 +25,6 @@ type Curriculum {
   outline: String!
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
-  user: User!
+  user: User! @relation(name: "UserCurriculum")
+  likedBy: [User!]! @relation(name: "LikedCurricula")
 }

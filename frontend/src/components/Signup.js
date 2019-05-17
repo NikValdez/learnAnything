@@ -5,6 +5,7 @@ import React, { useState } from 'react'
 import { useMutation } from 'react-apollo-hooks'
 import { withRouter } from 'react-router-dom'
 import { CURRENT_USER_QUERY } from './User'
+import './styles/Signup.css'
 
 const SIGNUP_MUTATION = gql`
   mutation SIGNUP_MUTATION(

@@ -21,7 +21,8 @@ type Mutation {
     password: String!
     confirmPassword: String!
   ): User!
-  createCurriculum(title: String!, time: String, outline: String!): Curriculum
+  createCurriculum(title: String!, time: String, outline: String!): Curriculum!
+  updateCurriculum(id: ID!): Curriculum!
 }
 
 type Query {

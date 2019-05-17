@@ -19,6 +19,7 @@ import Signin from './components/Signin'
 import Signup from './components/Signup'
 import { endpoint } from './config'
 import theme from './theme'
+import CreateLike from './components/CreateLike'
 
 const client = new ApolloClient({
   uri: endpoint,
@@ -48,6 +49,7 @@ function App() {
                   <Route exact path="/curricula" component={Curricula} />
                   <Route exact path="/search" component={Search} />
                   <Route exact path="/curriculum/:id" component={Curriculum} />
+                  <Route exact path="/createlike" component={CreateLike} />
                 </PleaseSignIn>
               </Switch>
               <Footer />
