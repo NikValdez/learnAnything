@@ -140,9 +140,9 @@ const Mutations = {
     )
     return curriculum
   },
-  async updateCurriculum(parent, args, ctx, info) {
+  async createLike(parent, args, ctx, info) {
     //run update method
-    return ctx.db.mutation.updateCurriculum(
+    return ctx.db.mutation.createLike(
       {
         data: {
           likedBy: {
