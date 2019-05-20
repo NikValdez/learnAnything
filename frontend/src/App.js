@@ -20,6 +20,7 @@ import Signup from './components/Signup'
 import { endpoint } from './config'
 import theme from './theme'
 import CreateLike from './components/CreateLike'
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 const client = new ApolloClient({
   uri: endpoint,
@@ -29,7 +30,7 @@ const client = new ApolloClient({
 function App() {
   return (
     <MuiThemeProvider theme={theme}>
-      <Suspense fallback={<p>Loading...</p>}>
+      <Suspense fallback={<CircularProgress />}>
         <ApolloProvider client={client}>
           <ApolloHooksProvider client={client}>
             <Router>
@@ -52,7 +53,7 @@ function App() {
                   <Route exact path="/createlike" component={CreateLike} />
                 </PleaseSignIn>
               </Switch>
-              <Footer />
+              {/* <Footer /> */}
             </Router>
           </ApolloHooksProvider>
         </ApolloProvider>

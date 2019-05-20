@@ -8,3 +8,23 @@
   grid-template-columns: 35% 50%;
   margin-top: 10rem;
 }
+
+.plain-button {
+  padding: 10px;
+  background: white;
+  width: 70%;
+}
+
+.recent-button {
+  padding: 10px;
+  background: white;
+  width: 70%;
+  border: 3px solid #021b79;
+}
+.popular-button {
+  width: 70%;
+  margin-left: 10px;
+  padding: 10px;
+  border: 3px solid #021b79;
+  background: white;
+}

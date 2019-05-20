@@ -141,8 +141,11 @@ const Mutations = {
     return curriculum
   },
   async createLike(parent, args, ctx, info) {
-    //run update method
-    return ctx.db.mutation.createLike(
+    if (!ctx.req.userId) {
+      throw new Error('You must be logged in to do that!')
+    }
+    //Create the like
+    return ctx.db.mutation.updateCurriculum(
       {
         data: {
           likedBy: {
